@@ -16,7 +16,7 @@ const screens = {
 
 const NotificationStack = createStackNavigator(screens,{
   defaultNavigationOptions:{
-    headerLeft:null,
+    headerLeft:()=>null,
     headerTintColor:'#fff',
     headerStyle:
     {

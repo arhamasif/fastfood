@@ -10,7 +10,7 @@ const screens = {
     screen: Home,
     navigationOptions: ({navigation}) => {
       return{
-        headerTitle: () => <Header title="Home" navigation={navigation} navigatingFrom="Admin" />,
+        headerTitle: () => <Header title="Home" navigation={navigation} navFrom="Admin" />,
       }
     }
   },
@@ -21,7 +21,7 @@ const screens = {
 
 const HomeStackAdmin = createStackNavigator(screens,{
   defaultNavigationOptions:{
-    headerLeft:null,
+    headerLeft:()=>null,
     headerTintColor:'#fff',
     headerStyle:
     {
