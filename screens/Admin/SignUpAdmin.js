@@ -43,6 +43,7 @@ const SignUpAdmin = props =>
             /*if it is not same,execute these commands*/
             console.log(user);
             setisVisible(true);
+            Submitdataadmin();
         }
         else if(false/*username is same*/){
             return(
@@ -83,7 +84,7 @@ const SignUpAdmin = props =>
 
     const phonenumberInputFunction = enteredText =>
     {
-        user.current.lastname=enteredText;
+        user.current.phonenumber=enteredText;
     }
     const emailInputFunction = enteredText =>
     {
@@ -101,6 +102,28 @@ const SignUpAdmin = props =>
     {
         user.current.canteenlocation=enteredText;
     }
+    const Submitdataadmin  = ()=>{
+        fetch("http://10.0.2.2:3000/send-data-admin",{
+            method :"post",
+            headers :{
+                'Content-Type':'application/json'
+            },
+            body:JSON.stringify({
+                Username:user.current.username,
+                FirstName:user.current.firstname,
+                LastName:user.current.lastname,
+                email:user.current.email,
+                PhoneNumber:user.current.phonenumber,
+                password:user.current.password,
+                canteenlocation:user.current.canteenlocation
+            })
+        })
+        .then(res=>res.json())
+        .then(data=>{
+            console.log(data)
+        })
+    }
+
 
     return(
         
