@@ -44,6 +44,7 @@ const SignUpCust = props =>
             /*if it is not same,execute these commands*/
             console.log(user);
             setisVisible(true);
+            Submitdata();
         }
         else if(false/*username is same*/){
             return(
@@ -65,7 +66,6 @@ const SignUpCust = props =>
     {
         setisVisible(false);
     }
-    let jani;
 
     const usernameInputFunction = (enteredText) =>
     {
@@ -85,7 +85,7 @@ const SignUpCust = props =>
 
     const phonenumberInputFunction = enteredText =>
     {
-        user.current.lastname=enteredText;
+        user.current.phonenumber=enteredText;
     }
     const emailInputFunction = enteredText =>
     {
@@ -106,6 +106,29 @@ const SignUpCust = props =>
     const deptInputFunction = enteredText =>
     {
         user.current.department=enteredText;
+    }
+    
+    const Submitdata  = ()=>{
+        fetch("http://10.0.2.2:3000/send-data",{
+            method :"post",
+            headers :{
+                'Content-Type':'application/json'
+            },
+            body:JSON.stringify({
+                Username:user.current.username,
+                FirstName:user.current.firstname,
+                LastName:user.current.lastname,
+                email:user.current.email,
+                PhoneNumber:user.current.phonenumber,
+                password:user.current.password,
+                department:user.current.department,
+                roomno:user.current.officelocation
+            })
+        })
+        .then(res=>res.json())
+        .then(data=>{
+            console.log(data)
+        })
     }
 
     return(
