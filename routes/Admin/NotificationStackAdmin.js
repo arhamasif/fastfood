@@ -16,11 +16,13 @@ const screens = {
 
 const NotificationStackAdmin = createStackNavigator(screens,{
   defaultNavigationOptions:{
-  headerStyle:
-  {
-    backgroundColor:'#e76f51',
-    height:60
-  }
+    headerLeft:null,
+    headerTintColor:'#fff',
+    headerStyle:
+    {
+      backgroundColor:'#e76f51',
+      height:60
+    }
 }}
 );
 

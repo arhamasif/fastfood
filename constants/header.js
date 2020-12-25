@@ -1,6 +1,7 @@
 import React,{useRef} from 'react';
 import { View,Text,StyleSheet } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import Colors from '../components/colors';
 
 const header = props =>
 {
@@ -30,7 +31,8 @@ const styles = StyleSheet.create({
         height:'100%',
         flexDirection:'row',
         alignItems:'center',
-        justifyContent:'center'
+        justifyContent:'center',
+        backgroundColor:Colors.primary
     },
     headerText:
     {

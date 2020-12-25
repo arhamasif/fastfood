@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React,{useState,useEffect} from 'react';
 import {View, Text, FlatList,TouchableOpacity,StyleSheet,ImageBackground} from 'react-native';
 import images from "../../components/imageArray";
 
@@ -12,8 +12,8 @@ const Home = props => {
 ]);
 
 
-const {navigation} = props;
 
+const {navigation} = props;
 
 
   const detailScreenHandler = (object) =>
