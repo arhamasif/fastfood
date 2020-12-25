@@ -1,5 +1,6 @@
-import React,{useRef} from 'react';
+import React, { useEffect } from 'react';
 import { View,Text,StyleSheet } from 'react-native';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Colors from '../components/colors';
 
@@ -11,10 +12,24 @@ const header = props =>
         navigation.openDrawer();
     };
 
+    const shoppingCartHandler = () =>
+    {
+        navigation.navigate('ShoppingCart');
+    }
+    
+    let shoppingCartIcon;
+    useEffect(()=>{
+        if(props.navigatingFrom==='Cust')
+    {
+        shoppingCartIcon=<Icon name='shopping-cart' size={34} style={styles.carticon} onPress={shoppingCartHandler} />;
+    }
+    },[props.navigatingFrom]);
+    
+
     return(
         <View style={styles.header}>
             <Icon name='navicon' size={34} style={styles.menuicon} onPress={drawerHandler}/>
-            <Icon name='shopping-cart' size={34} style={styles.carticon} onPress={()=>{}} />
+            {shoppingCartIcon}
             <View style={styles.insideHeader}>
                 <Text style={styles.headerText}>
                     {props.title}

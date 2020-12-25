@@ -10,7 +10,7 @@ const screens = {
     screen: Home,
     navigationOptions: ({navigation}) => {
       return{
-        headerTitle: () => <Header title="Home" navigation={navigation} />,
+        headerTitle: () => <Header title="Home" navigation={navigation} navigatingFrom="Admin" />,
       }
     }
   },

@@ -26,7 +26,7 @@ const Notifications = props =>
             data={notifs}
             key={notifs.key}
             renderItem={({item}) =>
-            <View >
+            <View>
                 <Text>{item.notif}</Text>
             </View>}
             />

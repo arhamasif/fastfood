@@ -1,25 +1,23 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import { View,Text,StyleSheet, Modal, TouchableHighlight} from 'react-native';
 import Colors from './colors';
 
 const Verification = props =>
 {
     const {navigation} = props;
+    const [verified,setVerified] = useState(false);
     useEffect(()=>{
-        if(false/*verified*/)
+        if(true/*verified*/)
         {
             props.visibleFunc();
             if(props.signUpFrom==='Admin')
             {
                 navigation.navigate('NavigatorAdmin');
             }
-            else
+            else if (props.signUpFrom==='Cust')
             {
                 navigation.navigate('NavigatorCust');
             }
-        }
-        else{
-        /*insert verification function here*/
         }
     });
 

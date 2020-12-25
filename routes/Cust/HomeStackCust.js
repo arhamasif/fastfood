@@ -3,19 +3,23 @@ import CustHome from '../../screens/Cust/CustHome';
 import Header from '../../constants/header';
 import React from 'react';
 import FoodItems from '../../screens/Cust/FoodItems';
-
+import ShoppingCart from '../../screens/Cust/ShoppingCart';
 
 const screens = {
   Home: {
     screen: CustHome,
     navigationOptions: ({navigation}) => {
       return{
-        headerTitle: () => <Header title="Home" navigation={navigation} />
+        headerTitle: () => <Header title="Home" navigation={navigation} navigatingFrom="Cust" />
       }
     }
   },
   Items: {
     screen: FoodItems
+  },
+  ShoppingCart:
+  {
+    screen: ShoppingCart
   }
 };
 

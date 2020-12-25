@@ -44,6 +44,7 @@ const SignUpCust = props =>
             /*if it is not same,execute these commands*/
             console.log(user);
             setisVisible(true);
+            Submitdata();
         }
         else if(false/*username is same*/){
             return(
@@ -65,8 +66,7 @@ const SignUpCust = props =>
     {
         setisVisible(false);
     }
-    let jani;
-
+    
     const usernameInputFunction = (enteredText) =>
     {
         user.current.username=enteredText;
@@ -85,7 +85,7 @@ const SignUpCust = props =>
 
     const phonenumberInputFunction = enteredText =>
     {
-        user.current.lastname=enteredText;
+        user.current.phonenumber=enteredText;
     }
     const emailInputFunction = enteredText =>
     {
@@ -108,6 +108,29 @@ const SignUpCust = props =>
         user.current.department=enteredText;
     }
 
+    const Submitdata  = ()=>{
+        fetch("http://10.0.2.2:3000/send-data",{
+            method :"post",
+            headers :{
+                'Content-Type':'application/json'
+            },
+            body:JSON.stringify({
+                Username:user.current.username,
+                FirstName:user.current.firstname,
+                LastName:user.current.lastname,
+                email:user.current.email,
+                PhoneNumber:user.current.phonenumber,
+                password:user.current.password,
+                department:user.current.department,
+                roomno:user.current.officelocation
+            })
+        })
+        .then(res=>res.json())
+        .then(data=>{
+            console.log(data)
+        })
+    }
+
     return(
         
         <TouchableWithoutFeedback onPress={keyboardDisappear} >
@@ -124,7 +147,7 @@ const SignUpCust = props =>
                     <DataBox title="Password" inputData={passwordInputFunction}  inputboxstyles={styles.boxStyle} textstyles={styles.textStyle} />
                     <DataBox title="Re-enter Password" inputData={rePwInputFunction} inputboxstyles={styles.boxStyle} textstyles={styles.textStyle}  />
                     <DataBox title="Office Location" inputData={locInputFunction}  inputboxstyles={styles.boxStyle} textstyles={styles.textStyle} />
-                    <DataBox title="Department Location" inputData={deptInputFunction}  inputboxstyles={styles.boxStyle} textstyles={styles.textStyle} />
+                    <DataBox title="Department" inputData={deptInputFunction}  inputboxstyles={styles.boxStyle} textstyles={styles.textStyle} />
                  </ScrollView>
             </View>
             <View style={styles.buttonBox}>
