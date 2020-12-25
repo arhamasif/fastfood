@@ -1,5 +1,5 @@
 import React, { useState ,useRef} from 'react';
-import { View,Text,StyleSheet, TouchableOpacity,TouchableWithoutFeedback,Keyboard,Alert } from 'react-native';
+import { View,Text,StyleSheet, TouchableOpacity,TouchableWithoutFeedback,Keyboard,Alert,ScrollView } from 'react-native';
 import Colors from '../../components/colors';
 import DataBox from '../../components/DataBox';
 import Verification from '../../components/Verification';
@@ -64,7 +64,6 @@ const SignUpAdmin = props =>
     {
         setisVisible(false);
     }
-    let jani;
 
     const usernameInputFunction = (enteredText) =>
     {
@@ -106,23 +105,26 @@ const SignUpAdmin = props =>
     return(
         
         <TouchableWithoutFeedback onPress={keyboardDisappear} >
+        
         <View style={styles.screen}>
             <Verification visible={isVisible} visibleFunc={removeVerification} navigation={navigation} signUpFrom="Admin"/>
             <View style={styles.outerBox}>
-                <DataBox title="Username" inputData={usernameInputFunction} />
-                <DataBox title="First Name" inputData={firstnameInputFunction}/>
-                <DataBox title="Last Name" inputData={lastnameInputFunction}/>
-                <DataBox title="Phone Number" inputData={phonenumberInputFunction} />
-                <DataBox title="Email" inputData={emailInputFunction} />
-                <DataBox title="Password" inputData={passwordInputFunction} />
-                <DataBox title="Re-enter Password" inputData={rePwInputFunction} />
-                <DataBox title="Canteen Location" inputData={locInputFunction} />
+                <ScrollView style={styles.scroll}>
+                    <DataBox title="Username" inputData={usernameInputFunction} inputboxstyles={styles.boxStyle} textstyles={styles.textStyle} />
+                    <DataBox title="First Name" inputData={firstnameInputFunction} inputboxstyles={styles.boxStyle} textstyles={styles.textStyle} />
+                    <DataBox title="Last Name" inputData={lastnameInputFunction} inputboxstyles={styles.boxStyle} textstyles={styles.textStyle} />
+                    <DataBox title="Phone Number" inputData={phonenumberInputFunction} inputboxstyles={styles.boxStyle} textstyles={styles.textStyle}  />
+                    <DataBox title="Email" inputData={emailInputFunction} inputboxstyles={styles.boxStyle} textstyles={styles.textStyle}  />
+                    <DataBox title="Password" inputData={passwordInputFunction} inputboxstyles={styles.boxStyle} textstyles={styles.textStyle}  />
+                    <DataBox title="Re-enter Password" inputData={rePwInputFunction} inputboxstyles={styles.boxStyle} textstyles={styles.textStyle}  />
+                    <DataBox title="Canteen Location" inputData={locInputFunction} inputboxstyles={styles.boxStyle} textstyles={styles.textStyle}  />
+                 </ScrollView>
             </View>
             <View style={styles.buttonBox}>
             {/*button for Confirm*/}
             <TouchableOpacity activeOpacity={0.8} onPress={confirmHandler}>
                     <View style={styles.insideButtonBox}>
-                        <Text>
+                        <Text style={styles.buttonText}>
                             Confirm
                         </Text>
                     </View>
@@ -130,7 +132,7 @@ const SignUpAdmin = props =>
             {/*button for Cancel*/}
             <TouchableOpacity activeOpacity={0.8} onPress={navigateToLogin}>
                     <View style={styles.insideButtonBox}>
-                        <Text>
+                        <Text style={styles.buttonText}>
                             Cancel
                         </Text>
                     </View>
@@ -142,23 +144,29 @@ const SignUpAdmin = props =>
 };
 
 const styles = StyleSheet.create({
+    scroll:{
+
+    },
     screen:{
         flex:1,
-        justifyContent:'flex-start',
+        justifyContent:'center',
         alignItems:'center',
         backgroundColor:Colors.primary
     },
     outerBox:
     {
+        flex:0.8,
+        marginTop:'20%',
         padding:10,
         width:'80%',
-        maxHeight:'80%',
+        height:'80%',
         backgroundColor:'white',
-        flexWrap:'wrap'
+        borderRadius:5,
+        justifyContent:'center'
     },
     insideButtonBox:
     {
-        width:100,
+        width:'90%',
         height:'24%',
         backgroundColor:Colors.primary,
         alignItems:'center',
@@ -166,16 +174,29 @@ const styles = StyleSheet.create({
         borderWidth:4,
         borderRadius:8,
         borderColor:Colors.secondary,
-        marginHorizontal:15
+        marginHorizontal:'10%'
     },
     buttonBox:
     {
+        width:'70%',
+        marginBottom:'20%',
         flexDirection:'row',
-        justifyContent:'space-around',
+        justifyContent:'space-evenly',
         alignItems:'center'
     },
-    signUpBox:
+    boxStyle:
     {
+        borderColor:Colors.secondary
+    },
+    textStyle:
+    {
+        color:Colors.primary
+    },
+    buttonText:
+    {
+        fontWeight:'bold',
+        fontSize:20,
+        color:'white'
     }
 });
 

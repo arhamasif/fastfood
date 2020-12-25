@@ -6,7 +6,7 @@ const Verification = props =>
 {
     const {navigation} = props;
     useEffect(()=>{
-        if(true/*verified*/)
+        if(false/*verified*/)
         {
             props.visibleFunc();
             if(props.signUpFrom==='Admin')
