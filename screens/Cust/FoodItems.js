@@ -1,13 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React, { useRef, useState,useEffect } from 'react';
 import {View,Text,StyleSheet,FlatList} from 'react-native';
 import Foods from '../../components/Foods';
 import Colors from '../../components/colors';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import colors from '../../components/colors';
 
 const FoodItems = props =>
 {
     const {navigation} = props;
     const category = navigation.getParam('category');
+    const itemlist = useRef([]);
 
     const navigateToHome = () =>
     {
@@ -17,10 +19,22 @@ const FoodItems = props =>
     //built this to record the order
     const [order,setOrder] = useState([]);
 
-    /*useEffect(()=>
-    {   
-        enter backend here to fetch category wise data from database with the variable 'category'
-    },[category])*/
+   /* useEffect(()=>
+    {   let i=0;
+        //enter backend here to fetch category wise data from database with the variable 'category'
+        while(i<Foods.length)
+        {
+            if(category===Foods[i].category)
+            {
+                itemlist.current=[...itemlist.current,Foods[i]];
+                console.log(itemlist.current);
+                i++;
+            }
+            else{
+                i++;
+            }
+        }
+    },[category]);*/
 
     //using a temporary object i imported from folder components here
     //flatlist's key prop will take your unique ID from database
@@ -29,10 +43,13 @@ const FoodItems = props =>
 
     const addToCartHandler = addItem =>
     {
+        //adds items to the order list, modify here for quantity
+        //for help, i've added key here, check if item present with key
+        console.log(addItem.key);
         setOrder([...order,addItem]);
     }
-
     console.log(order);
+
 
     return(
         <View style={styles.screen}>
@@ -52,15 +69,13 @@ const FoodItems = props =>
                     <Text style={styles.title}>{item.price} rs</Text>
                 </View>
             </View>
-            <View style={styles.buttonBox}>
-                <TouchableOpacity onPress={addToCartHandler.bind(this,item)}>
+                <TouchableOpacity onPress={addToCartHandler.bind(this,(item))}>
                     <View style={styles.insideButtonBox}>
                         <Text style={styles.insideButtonTitle}>
                             Add to Cart
                         </Text>
                     </View>
                 </TouchableOpacity>
-            </View>  
             </View> 
         );
         }}
@@ -87,30 +102,30 @@ const styles = StyleSheet.create({
     itemBox:
     {
         width:'100%',
-        height:'80%',
+        height:'8%',
         flexDirection:'row',
-        backgroundColor:Colors.tertiary,
         alignItems:'center',
-        justifyContent:'center',
-        padding:5
+        justifyContent:'flex-start',
+        marginBottom:10,
     },
     buttonBox:
     {
         flexDirection:'row',
-        justifyContent:'space-around',
+        justifyContent:'center',
         alignItems:'center'
     },
     insideButtonBox:
     {
      width:'100%',
-     height:'40%',
+     height:'4%',
      backgroundColor:Colors.primary,
      alignItems:'center',
      justifyContent:'center',
-     borderWidth:4,
+     borderWidth:2,
      borderRadius:8,
      borderColor:Colors.secondary,
-     padding:10
+     padding:10,
+     marginTop:2
     },
     insideButtonTitle:
     {
@@ -121,29 +136,32 @@ const styles = StyleSheet.create({
     itemnameBox:
     {
         flexDirection:'row',
-        width:'60%',
+        width:'80%',
         justifyContent:'center',
-        backgroundColor:Colors.quaternary
+        backgroundColor:Colors.secondary,
+        borderTopLeftRadius:8,
+        borderBottomStartRadius:8
     },
     itemPriceBox:
     {
         flexDirection:'row',
-        width:'30%',
+        width:'20%',
         right:0,
         justifyContent:'center',
-        backgroundColor:'white'
+        backgroundColor:colors.tertiary,
+        borderTopRightRadius:8,
+        borderBottomEndRadius:8
     },
     title:
     {
         fontWeight:'bold',
-        fontSize:15
+        fontSize:15,
+        color:'white'
     },
     list:
     {
         width:'100%',
-        height:'22%',
-        backgroundColor:Colors.primary,
-        marginVertical:5
+        height:'12%'
     },
     backButton:
     {
@@ -152,7 +170,7 @@ const styles = StyleSheet.create({
     },
     flist:
     {
-        backgroundColor:'white'
+        
     }
 });
 
