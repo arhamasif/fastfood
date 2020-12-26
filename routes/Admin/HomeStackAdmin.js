@@ -3,6 +3,7 @@ import Home from '../../screens/Admin/AdminHome';
 import Details from '../../screens/Admin/AdminOrderDetails';
 import Header from '../../constants/header';
 import React from 'react';
+import AdminAccountDetails from '../../screens/Admin/AdminAccountDetails';
 
 
 const screens = {
@@ -16,6 +17,10 @@ const screens = {
   },
   Details: {
     screen: Details
+  },
+  AccountDetails:
+  {
+    screen: AdminAccountDetails
   }
 };
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { View,Text,StyleSheet } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Colors from '../components/colors';
@@ -18,19 +18,29 @@ const header = props =>
     
     const accountHandler = () =>
     {
-        return;
+        navigation.navigate('AccountDetails');
     }
     
     const shoppingCartIcon=<Icon name='shopping-cart' size={34} style={styles.carticon} onPress={shoppingCartHandler} />;
-    const accountIcon=<Icon name='angle-left' size={34} style={styles.carticon} onPress={accountHandler} />;
-    
-    let headerRightIcon=accountIcon;
+    const accountIcon=<Icon name='user' size={34} style={styles.carticon} onPress={accountHandler} />;
+    const headerRightIcon = useRef();
+
+    useEffect(()=>{
+        if(navFrom==='Cust')
+        {
+            headerRightIcon.current=shoppingCartIcon;
+        }
+        else if(navFrom==='Admin')
+        {
+            headerRightIcon.current=accountIcon;
+        }
+    },[navFrom,headerRightIcon])
     
     
     return(
         <View style={styles.header}>
             <Icon name='navicon' size={34} style={styles.menuicon} onPress={drawerHandler}/>
-            {headerRightIcon}
+            {headerRightIcon.current}
             <View style={styles.insideHeader}>
                 <Text style={styles.headerText}>
                     {props.title}

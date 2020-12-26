@@ -24,7 +24,7 @@ const AdminLogin = props =>
         console.log(user);
         if((user.current.username==='thearhamasif' || user.current.email==='arhamasif@gmail.com') && (user.current.password==='1234'))
         {
-            navigation.navigate('NavigatorAdmin');
+            navigation.navigate('NavigatorCust');
         }
         else if(user.current.username!=='thearhamasif' || user.current.email!=='arhamasif@gmail.com')
         {

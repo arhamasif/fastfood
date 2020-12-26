@@ -1,20 +1,20 @@
 import {createStackNavigator} from 'react-navigation-stack';
-import Notifications from '../../screens/Cust/CustNotifications';
+import CustNotifications from '../../screens/Cust/CustNotifications';
 import Header from '../../constants/header';
 import React from 'react';
 
 const screens = {
-  Home: {
-    screen: Notifications,
+  Notifications: {
+    screen: CustNotifications,
     navigationOptions: ({navigation}) => {
       return{
-        headerTitle: () => <Header title="Notifications" navigation={navigation} />
+        headerTitle: () => <Header title="Notifications" navigation={navigation} navFrom="Cust" />
       }
   }
-}
+},
 }
 
-const NotificationStack = createStackNavigator(screens,{
+const NotificationStackCust = createStackNavigator(screens,{
   defaultNavigationOptions:{
     headerLeft:()=>null,
     headerTintColor:'#fff',
@@ -26,4 +26,4 @@ const NotificationStack = createStackNavigator(screens,{
 }}
 );
 
-export default NotificationStack;
+export default NotificationStackCust;

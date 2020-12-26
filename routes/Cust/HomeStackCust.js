@@ -15,15 +15,25 @@ const screens = {
     }
   },
   Items: {
-    screen: FoodItems
+    screen: FoodItems,
+    navigationOptions: ({navigation}) => {
+      return{
+        headerTitle: () => <Header title="Items" navigation={navigation} navFrom="Cust" />
+      }
+    }
   },
   ShoppingCart:
   {
-    screen: ShoppingCart
+    screen: ShoppingCart,
+    navigationOptions: ({navigation}) => {
+      return{
+        headerTitle: () => <Header title="Cart" navigation={navigation} navFrom="" />
+      }
+    }
   }
 };
 
-const HomeStack = createStackNavigator(screens,{
+const HomeStackCust = createStackNavigator(screens,{
   defaultNavigationOptions:{
     headerLeft:()=>null,
     headerTintColor:'#fff',
@@ -34,4 +44,4 @@ const HomeStack = createStackNavigator(screens,{
     }
   }});
 
-export default HomeStack;
+export default HomeStackCust;

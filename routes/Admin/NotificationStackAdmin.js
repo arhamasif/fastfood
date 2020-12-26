@@ -4,7 +4,7 @@ import Header from '../../constants/header';
 import React from 'react';
 
 const screens = {
-  Home: {
+  Notifications: {
     screen: Notifications,
     navigationOptions: ({navigation}) => {
       return{

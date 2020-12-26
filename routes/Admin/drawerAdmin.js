@@ -8,7 +8,7 @@ const RootDrawerNavigator = createDrawerNavigator({
     {
         screen: HomeStackAdmin
     },
-    Notification:{
+    Notifications:{
         screen: NotificationStackAdmin
     }
 });

@@ -4,11 +4,11 @@ import images from "../../components/imageArray";
 
 const Home = props => {
 
-  const [reviews,setReviews] = useState([
-  {title: 'Fast Food',rating: 5,body:'lorem ipsum',key:'1'},
-  {title: 'Desi Food',rating: 4,body:'lorem ipsum',key:'2'},
-  {title: 'Snacks',rating: 2,body:'lorem ipsum',key:'3'},
-  {title: 'Beverages',rating: 2,body:'lorem ipsum',key:'4'}
+  const [FoodCategories,setFoodCategories] = useState([
+  {category: 'Fast Food',key:'1'},
+  {category: 'Desi Food',key:'2'},
+  {category: 'Snacks',key:'3'},
+  {category: 'Beverages',key:'4'}
 ]);
 
 
@@ -18,22 +18,21 @@ const {navigation} = props;
 
   const detailScreenHandler = (object) =>
   {
-    return;
       navigation.navigate('Items',object);
   };
 
   return (
   <View style={styles.screen}>
       <FlatList 
-      data={reviews}
-      key={reviews.key}
+      data={FoodCategories}
+      key={FoodCategories.key}
       renderItem={({item})=>{
         return (
           <TouchableOpacity activeOpacity={0.8} onPress={(detailScreenHandler.bind(this,item))}>
           <ImageBackground style={styles.image} source={images[parseInt(item.key)-1]}>
           <View style={styles.container}>
           <View style={styles.container2}>
-          <Text style={styles.titleText}>{item.title}</Text>
+          <Text style={styles.titleText}>{item.category}</Text>
           </View>
         </View>
           </ImageBackground>

@@ -1,15 +1,15 @@
 import {createDrawerNavigator} from 'react-navigation-drawer';
 import { createAppContainer } from "react-navigation";
-import HomeStack from './HomeStackCust';
-import NotificationStack from './NotificationStackCust';
+import HomeStackCust from './HomeStackCust';
+import NotificationStackCust from './NotificationStackCust';
 
 const RootDrawerNavigator = createDrawerNavigator({
     Home:
     {
-        screen: HomeStack
+        screen: HomeStackCust
     },
-    Notification:{
-        screen: NotificationStack
+    Notifications:{
+        screen: NotificationStackCust
     }
 });
 
