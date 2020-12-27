@@ -1,14 +1,13 @@
 import React,{useState} from 'react';
-import {View, Text, FlatList,TouchableOpacity,StyleSheet,ImageBackground} from 'react-native';
-import images from "../../components/imageArray";
+import {View, Text, FlatList,TouchableOpacity,StyleSheet} from 'react-native';
 
-const Home = props => {
+const Canteens = props => {
 
-  const [FoodCategories,setFoodCategories] = useState([
-  {category: 'Fast Food',key:'1'},
-  {category: 'Desi Food',key:'2'},
-  {category: 'Snacks',key:'3'},
-  {category: 'Beverages',key:'4'}
+  const [Canteens,setCanteens] = useState([
+  {canteen: 'Trends Food',key:'1'},
+  {canteen: 'Fast Dhaba',key:'2'},
+  {canteen: 'Pizza Fast',key:'3'},
+  {canteen: 'Shawarma Fast',key:'4'}
 ]);
 
 
@@ -16,26 +15,24 @@ const {navigation} = props;
 
 
 
-  const detailScreenHandler = (object) =>
+  const detailScreenHandler = () =>
   {
-      navigation.navigate('Items',object);
+      navigation.navigate('Categories');
   };
 
   return (
   <View style={styles.screen}>
       <FlatList 
-      data={FoodCategories}
-      key={FoodCategories.key}
+      data={Canteens}
+      key={Canteens.key}
       renderItem={({item})=>{
         return (
           <TouchableOpacity activeOpacity={0.8} onPress={(detailScreenHandler.bind(this,item))}>
-          <ImageBackground style={styles.image} source={images[parseInt(item.key)-1]}>
           <View style={styles.container}>
           <View style={styles.container2}>
           <Text style={styles.titleText}>{item.category}</Text>
           </View>
         </View>
-          </ImageBackground>
         </TouchableOpacity>
         );
       }}
@@ -92,4 +89,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default Home;
+export default Canteens;

@@ -10,7 +10,7 @@ export default StyleSheet.create({
     marginRight: 'auto',
   },
   cellRoot: {
-    width: 60,
+    width: 40,
     height: 60,
     justifyContent: 'center',
     alignItems: 'center',

@@ -10,7 +10,7 @@ import {
 
 import styles from './stylesVer';
 
-const CELL_COUNT = 4;
+const CELL_COUNT = 5;
 
 const UnderlineExample = () => {
   const [value, setValue] = useState('');
@@ -22,7 +22,7 @@ const UnderlineExample = () => {
 
   return (
     <SafeAreaView style={styles.root}>
-      <Text style={styles.title}>Underline example</Text>
+      <Text style={styles.title}>Verification Code</Text>
       <CodeField
         ref={ref}
         {...props}

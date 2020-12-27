@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import { View,Text,StyleSheet, Modal, TouchableHighlight} from 'react-native';
+import { View,Text,StyleSheet, Modal, TouchableOpacity} from 'react-native';
 
 import Colors from './colors';
 import UnderlineExample from'./UnderlineExample';
@@ -9,10 +9,11 @@ const Verification = props =>
 
     
 
-        const {navigation} = props;
+        const {navigation,submitData} = props;
         const [verified,setVerified] = useState(false);
         useEffect(()=>{
-            if(true/*verified*/)
+            /*verification function called*/
+            if(false/*verified*/)
             {
                 submitData();
                 props.visibleFunc();
@@ -35,12 +36,12 @@ const Verification = props =>
             <View style={styles.outerBox}>
             <Text>Verification link is sent</Text>
             <View style={styles.buttonBox}>
-            <TouchableHighlight style={styles.insideButtonBox} onPress={()=>{/*insert verification function here*/}}>
+            <TouchableOpacity style={styles.insideButtonBox} onPress={()=>{/*insert verification function here*/}}>
                 <Text>Press this to send again!</Text>
-            </TouchableHighlight>
-            <TouchableHighlight style={styles.insideButtonBox} onPress={props.visibleFunc}>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.insideButtonBox} onPress={props.visibleFunc}>
                 <Text>Go Back</Text>
-            </TouchableHighlight>
+            </TouchableOpacity>
             </View>
             </View>
         </Modal>
