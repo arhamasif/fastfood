@@ -18,9 +18,14 @@ const screens = {
   Details: {
     screen: Details
   },
-  AccountDetails:
+  Account:
   {
-    screen: AdminAccountDetails
+    screen: AdminAccountDetails,
+    navigationOptions: ({navigation}) => {
+      return{
+        headerTitle: () => <Header title="Account" navigation={navigation} navFrom="" />,
+      }
+    }
   }
 };
 
