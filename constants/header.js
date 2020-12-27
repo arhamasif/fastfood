@@ -18,7 +18,7 @@ const header = props =>
     
     const accountHandler = () =>
     {
-        navigation.navigate('AccountDetails');
+        navigation.navigate('Account');
     }
     
     const shoppingCartIcon=<Icon name='shopping-cart' size={34} style={styles.carticon} onPress={shoppingCartHandler} />;

@@ -6,9 +6,6 @@ import Verification from '../../components/Verification';
 
 const SignUpAdmin = props =>
 {
-    const usernameChecker = /^(?=.{8,20}$)[a-zA-Z0-9._]$/g;
-    const emailChecker = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
-    const passwordChecker = /^(?=.*\d).{4,8}$/; 
 
     const {navigation} = props;
     const keyboardDisappear = () =>
@@ -108,13 +105,35 @@ const SignUpAdmin = props =>
     {
         user.current.canteenlocation=enteredText;
     }
+    const Submitdata  = ()=>{
+        fetch("http://10.0.2.2:3000/send-data",{
+            method :"post",
+            headers :{
+                'Content-Type':'application/json'
+            },
+            body:JSON.stringify({
+                Username:user.current.username,
+                FirstName:user.current.firstname,
+                LastName:user.current.lastname,
+                email:user.current.email,
+                PhoneNumber:user.current.phonenumber,
+                password:user.current.password,
+                department:user.current.department,
+                roomno:user.current.officelocation
+            })
+        })
+        .then(res=>res.json())
+        .then(data=>{
+            console.log(data)
+        })
+    }
 
     return(
         
         <TouchableWithoutFeedback onPress={keyboardDisappear} >
         
         <View style={styles.screen}>
-            <Verification visible={isVisible} visibleFunc={removeVerification} navigation={navigation} signUpFrom="Admin"/>
+            <Verification visible={isVisible} visibleFunc={removeVerification} navigation={navigation} signUpFrom="Admin" submitData={Submitdata} VerificationFunc={()=>{}}/>
             <View style={styles.outerBox}>
                 <ScrollView style={styles.scroll}>
                     <DataBox title="Username" inputData={usernameInputFunction} inputboxstyles={styles.boxStyle} textstyles={styles.textStyle} />

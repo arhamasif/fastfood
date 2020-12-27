@@ -8,7 +8,7 @@ const screens = {
     screen: Notifications,
     navigationOptions: ({navigation}) => {
       return{
-        headerTitle: () => <Header title="Notifications" navigation={navigation} />
+        headerTitle: () => <Header title="Notifications" navigation={navigation} navFrom="Admin" />
       }
   }
 }

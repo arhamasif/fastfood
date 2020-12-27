@@ -12,7 +12,7 @@ const Verification = props =>
         const {navigation,submitData,VerificationFunc} = props;
         const [verified,setVerified] = useState(false);
         useEffect(()=>{
-            if(true/*verified*/)
+            if(false/*verified*/)
             {
                 submitData();
                 props.visibleFunc();

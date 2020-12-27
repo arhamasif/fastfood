@@ -6,9 +6,6 @@ import Verification from '../../components/Verification';
 
 const SignUpCust = props =>
 {
-    const usernameChecker = /^(?=.{8,20}$)[a-zA-Z0-9._]$/g;
-    const emailChecker = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
-    const passwordChecker = /^(?=.*\d).{4,8}$/; 
 
     const {navigation} = props;
     const keyboardDisappear = () =>

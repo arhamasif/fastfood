@@ -18,6 +18,7 @@
     "express": "^4.17.1",
     "mongoose": "^5.11.8",
     "nodemon": "^2.0.6",
+    "path-to-regexp": "^1.8.0",
     "react": "16.13.1",
     "react-native": "0.63.4",
     "react-native-confirmation-code-field": "^6.5.1",
