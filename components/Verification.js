@@ -1,30 +1,74 @@
 import React, {useEffect, useState} from 'react';
-import { View,Text,StyleSheet, Modal, TouchableHighlight} from 'react-native';
+import { View,Text,StyleSheet, Modal, TouchableHighlight,SafeAreaView} from 'react-native';
+import {
+    CodeField,
+    Cursor,
+    useBlurOnFulfill,
+    useClearByFocusCell,
+  } from 'react-native-confirmation-code-field';
 import Colors from './colors';
+import stylesVer from './stylesVer';
+
+const CELL_COUNT = 5;
+
 
 const Verification = props =>
 {
-    const {navigation} = props;
-    const [verified,setVerified] = useState(false);
-    useEffect(()=>{
-        if(true/*verified*/)
-        {
-            props.visibleFunc();
-            if(props.signUpFrom==='Admin')
+
+    const UnderlineExample = () => {
+        const [value, setValue] = useState('');
+        const ref = useBlurOnFulfill({value, cellCount: CELL_COUNT});
+        const [props, getCellOnLayoutHandler] = useClearByFocusCell({
+        value,
+        setValue,
+        })};
+
+        const {navigation,submitData,VerificationFunc} = props;
+        const [verified,setVerified] = useState(false);
+        useEffect(()=>{
+            if(true/*verified*/)
             {
-                navigation.navigate('NavigatorAdmin');
+                submitData();
+                props.visibleFunc();
+                if(props.signUpFrom==='Admin')
+                {
+                    navigation.navigate('NavigatorAdmin');
+                }
+                else if (props.signUpFrom==='Cust')
+                {
+                    navigation.navigate('NavigatorCust');
+                }
             }
-            else if (props.signUpFrom==='Cust')
-            {
-                navigation.navigate('NavigatorCust');
-            }
-        }
-    });
+        });
 
 
 
     return(
         <Modal style={styles.screen} visible={props.visible} animationType="slide">
+            <SafeAreaView style={stylesVer.root}>
+      <Text style={stylesVer.title}>Underline example</Text>
+      <CodeField
+        ref={ref}
+        {...props}
+        value={value}
+        onChangeText={setValue}
+        cellCount={CELL_COUNT}
+        rootStyle={stylesVer.codeFieldRoot}
+        keyboardType="number-pad"
+        textContentType="oneTimeCode"
+        renderCell={({index, symbol, isFocused}) => (
+          <View
+            // Make sure that you pass onLayout={getCellOnLayoutHandler(index)} prop to root component of "Cell"
+            onLayout={getCellOnLayoutHandler(index)}
+            key={index}
+            style={[stylesVer.cellRoot, isFocused && stylesVer.focusCell]}>
+            <Text style={stylesVer.cellText}>
+              {symbol || (isFocused ? <Cursor /> : null)}
+            </Text>
+          </View>
+        )}
+      />
+    </SafeAreaView>
             <View style={styles.outerBox}>
             <Text>Verification link is sent</Text>
             <View style={styles.buttonBox}>
@@ -39,6 +83,7 @@ const Verification = props =>
         </Modal>
     );
 };
+
 
 const styles = StyleSheet.create({
     screen:{
