@@ -31,7 +31,7 @@ const Verification = props =>
 
     return(
         <Modal style={styles.screen} visible={props.visible} animationType="slide">
-            <UnderlineExample/>
+            <UnderlineExample />
             <View style={styles.outerBox}>
             <Text>Verification link is sent</Text>
             <View style={styles.buttonBox}>

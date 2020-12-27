@@ -10,7 +10,7 @@ import {
 
 import styles from './stylesVer';
 
-const CELL_COUNT = 5;
+const CELL_COUNT = 4;
 
 const UnderlineExample = () => {
   const [value, setValue] = useState('');
