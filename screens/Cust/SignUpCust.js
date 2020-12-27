@@ -101,7 +101,7 @@ const SignUpCust = props =>
         }
         else
         {
-            Alert.alert('Passwords do not match','Re-enter Password',[{title:'Re-enter',style:'destructive',onPress:()=>{}}]);
+            Alert.alert('Passwords do not match','Re-enter Password',[{title:'Re-enter',style:'destructive',onPress:()=>{user.current.password=''}}]);
         }
     }
     const locInputFunction = enteredText =>
