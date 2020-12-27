@@ -30,7 +30,7 @@ const {navigation} = props;
           <TouchableOpacity activeOpacity={0.8} onPress={(detailScreenHandler.bind(this,item))}>
           <View style={styles.container}>
           <View style={styles.container2}>
-          <Text style={styles.titleText}>{item.category}</Text>
+          <Text style={styles.titleText}>{item.canteen}</Text>
           </View>
         </View>
         </TouchableOpacity>
