@@ -37,27 +37,10 @@ const SignUpCust = props =>
         }
     );
     const [isVisible,setisVisible] = useState(false);
-    function generateRandomString(length)
-    {
-        var chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ@!#$%^&*()';
-        var random_string = '';
-        if(length > 0){
-          for(var i=0; i < length; i++){
-              random_string += chars.charAt(Math.floor(Math.random() * chars.length));
-          }
-        }
-        return random_string;
-    }
     const confirmHandler = () =>
     {
         if(true/*check with database if username,email or phone number is same or not */){
             /*if it is not same,execute these commands*/
-            /* Jab user signup pe click karey or sari details check hojaen to database me enter krne se pehle aik verification ka
-            page show ho aur udr 5 length ki string input karega user "vcode" jo neche create horahi hai. usko aik variable me store karao
-            or vcode se check karado same hogi to database me store hojaega warna verification code dubara mangey.*/
-           const vcode = generateRandomString(5);
-           
-            
             console.log(user);
             setisVisible(true);
         }

@@ -14,11 +14,6 @@ const AdminLogin = props =>
             password:''
         }
     );
-
-    
-  
-    
-
     const navigateToHome = () =>
     {
         console.log(user);
