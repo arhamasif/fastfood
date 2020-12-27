@@ -133,7 +133,7 @@ const SignUpAdmin = props =>
         <TouchableWithoutFeedback onPress={keyboardDisappear} >
         
         <View style={styles.screen}>
-            <Verification visible={isVisible} visibleFunc={removeVerification} navigation={navigation} signUpFrom="Admin" submitData={Submitdata} />
+            <Verification visible={isVisible} visibleFunc={removeVerification} navigation={navigation} signUpFrom="Admin" submitData={Submitdata}/>
             <View style={styles.outerBox}>
                 <ScrollView style={styles.scroll}>
                     <DataBox title="Username" inputData={usernameInputFunction} inputboxstyles={styles.boxStyle} textstyles={styles.textStyle} />

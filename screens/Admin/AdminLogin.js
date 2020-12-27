@@ -1,6 +1,6 @@
 import React from 'react';
 import { useRef } from 'react';
-import { View,Text,StyleSheet, TextInput, Alert,TouchableOpacity, Keyboard,TouchableWithoutFeedback } from 'react-native';
+import { View,Text,StyleSheet, Alert,TouchableOpacity, Keyboard,TouchableWithoutFeedback } from 'react-native';
 import Colors from '../../components/colors';
 import DataBox from'../../components/DataBox';
 

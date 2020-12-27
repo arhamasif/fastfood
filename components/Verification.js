@@ -9,10 +9,10 @@ const Verification = props =>
 
     
 
-        const {navigation,submitData} = props;
+        const {navigation} = props;
         const [verified,setVerified] = useState(false);
         useEffect(()=>{
-            if(false/*verified*/)
+            if(true/*verified*/)
             {
                 submitData();
                 props.visibleFunc();
