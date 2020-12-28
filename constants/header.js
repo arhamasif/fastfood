@@ -2,10 +2,11 @@ import React, { useEffect, useRef } from 'react';
 import { View,Text,StyleSheet } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Colors from '../components/colors';
+import order from '../components/Order';
 
 const header = props =>
 {
-    const {navigation,navFrom,order} = props;
+    const {navigation,navFrom} = props;
     const drawerHandler = () =>
     {  
         navigation.openDrawer();

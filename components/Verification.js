@@ -10,10 +10,8 @@ const Verification = props =>
     
 
         const {navigation,submitData} = props;
-        const [verified,setVerified] = useState(false);
         useEffect(()=>{
-            /*verification function called*/
-            if(false/*verified*/)
+            if(false/*value===verification wali value*/)
             {
                 submitData();
                 props.visibleFunc();
@@ -29,10 +27,12 @@ const Verification = props =>
         });
 
 
+    const [value, setValue] = useState('');
+    
 
     return(
         <Modal style={styles.screen} visible={props.visible} animationType="slide">
-            <UnderlineExample />
+            <UnderlineExample value={value} setValue={setValue}/>
             <View style={styles.outerBox}>
             <Text>Verification link is sent</Text>
             <View style={styles.buttonBox}>
