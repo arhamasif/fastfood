@@ -3,7 +3,7 @@ import {View, Text, FlatList,TouchableOpacity,StyleSheet} from 'react-native';
 
 const Canteens = props => {
 
-  const [Canteens,setCanteens] = useState([
+  const [CanteensList,setCanteensList] = useState([
   {canteen: 'Trends Food',key:'1'},
   {canteen: 'Fast Dhaba',key:'2'},
   {canteen: 'Pizza Fast',key:'3'},
@@ -23,16 +23,15 @@ const {navigation} = props;
   return (
   <View style={styles.screen}>
       <FlatList 
-      data={Canteens}
-      key={Canteens.key}
+      style={styles.list}
+      data={CanteensList}
+      key={CanteensList.key}
       renderItem={({item})=>{
         return (
           <TouchableOpacity activeOpacity={0.8} onPress={(detailScreenHandler.bind(this,item))}>
-          <View style={styles.container}>
           <View style={styles.container2}>
           <Text style={styles.titleText}>{item.canteen}</Text>
           </View>
-        </View>
         </TouchableOpacity>
         );
       }}
@@ -45,47 +44,30 @@ const styles = StyleSheet.create({
   screen:
   {
     alignItems: 'center',
-    justifyContent: 'space-between',
+    justifyContent: 'center',
     flex: 1,
     paddingTop:20
   },
   titleText:
   {
-    fontSize: 18,
+    fontSize: 16,
     fontWeight:'bold',
     color:'#fff'
   },
   list:
   {
-    color:'#f00',
-    marginTop:10
-  },
-  container:
-  {
-    flex:1,
-    width:360,
-    height: 150,
-    alignContent:'center',
-    elevation:10,
-    justifyContent:'space-between'
+      flex:1
   },
   container2:
   {
+    flex:1,
     flexDirection:'row',
     justifyContent:'center',
     backgroundColor:'#e76f51',
-    justifyContent:'space-around',
     alignItems:'center',
-    width:360,
-    height:'30%'
-  },
-  image:
-  {
-    flex:1,
-    width:360,
-    height:'100%',
-    resizeMode:'contain',
-    marginVertical:10
+    width:'100%',
+    height:'80%',
+    marginTop:20
   }
 });
 
