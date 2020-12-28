@@ -5,15 +5,15 @@ import Colors from '../components/colors';
 
 const header = props =>
 {
-    const {navigation,navFrom} = props;
+    const {navigation,navFrom,order} = props;
     const drawerHandler = () =>
     {  
         navigation.openDrawer();
     };
 
-    const shoppingCartHandler = () =>
+    const shoppingCartHandler = (order) =>
     {
-        navigation.navigate('ShoppingCart');
+        navigation.navigate('ShoppingCart',order);
     }
     
     const accountHandler = () =>
@@ -21,7 +21,7 @@ const header = props =>
         navigation.navigate('Account');
     }
     
-    const shoppingCartIcon=<Icon name='shopping-cart' size={34} style={styles.carticon} onPress={shoppingCartHandler} />;
+    const shoppingCartIcon=<Icon name='shopping-cart' size={34} style={styles.carticon} onPress={shoppingCartHandler.bind(this,order)} />;
     const accountIcon=<Icon name='user' size={34} style={styles.carticon} onPress={accountHandler} />;
     const headerRightIcon = useRef();
 

@@ -1,6 +1,7 @@
 import React,{useState} from 'react';
 import {View, Text, FlatList,TouchableOpacity,StyleSheet,ImageBackground} from 'react-native';
 import images from "../../components/imageArray";
+import Colors from '../../components/colors';
 
 const Categories = props => {
 
@@ -15,6 +16,10 @@ const Categories = props => {
 const {navigation} = props;
 
 
+  const navigateToCanteens = () =>
+  {
+    navigation.pop();
+  };
 
   const detailScreenHandler = (object) =>
   {
@@ -40,6 +45,13 @@ const {navigation} = props;
         );
       }}
       />
+      <TouchableOpacity onPress={navigateToCanteens}>
+                    <View style={styles.backButton}>
+                        <Text style={styles.insideButtonTitle}>
+                            Choose a different canteen
+                        </Text>
+                    </View>
+                </TouchableOpacity>
   </View>
   )
 };
@@ -89,7 +101,18 @@ const styles = StyleSheet.create({
     height:'100%',
     resizeMode:'contain',
     marginVertical:10
-  }
+  },
+  backButton:
+    {
+        backgroundColor:Colors.primary,
+        marginVertical:10
+    },
+    insideButtonTitle:
+    {
+        color:'white',
+        fontSize:14,
+        fontWeight:'bold'
+    }
 });
 
 export default Categories;

@@ -1,5 +1,6 @@
 import React,{useState} from 'react';
 import {View, Text, FlatList,TouchableOpacity,StyleSheet} from 'react-native';
+import Colors from '../../components/colors';
 
 const Canteens = props => {
 
@@ -23,7 +24,6 @@ const {navigation} = props;
   return (
   <View style={styles.screen}>
       <FlatList 
-      style={styles.list}
       data={CanteensList}
       key={CanteensList.key}
       renderItem={({item})=>{
@@ -36,6 +36,7 @@ const {navigation} = props;
         );
       }}
       />
+      
   </View>
   )
 };
@@ -43,31 +44,29 @@ const {navigation} = props;
 const styles = StyleSheet.create({
   screen:
   {
+    flex:1,
     alignItems: 'center',
     justifyContent: 'center',
-    flex: 1,
     paddingTop:20
   },
   titleText:
   {
-    fontSize: 16,
+    fontSize: 20,
     fontWeight:'bold',
     color:'#fff'
   },
-  list:
-  {
-      flex:1
-  },
   container2:
   {
-    flex:1,
     flexDirection:'row',
     justifyContent:'center',
-    backgroundColor:'#e76f51',
+    backgroundColor:Colors.primary,
     alignItems:'center',
-    width:'100%',
-    height:'80%',
-    marginTop:20
+    width:280,
+    height:100,
+    marginVertical:28,
+    borderWidth:10,
+    borderColor:Colors.secondary,
+    borderRadius:20
   }
 });
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { View,Text,StyleSheet,Button } from 'react-native';
+import { View,Text,StyleSheet,Button,FlatList } from 'react-native';
 
 const ShoppingCart = props =>
 {
@@ -11,9 +11,8 @@ const ShoppingCart = props =>
     }
    return(
      <View>
-        <Text>
-            This is a shopping cart!
-        </Text>
+        <FlatList 
+        data={}/>
         <Button title="Continue Shopping" onPress={continueShoppingHandler} />
     </View>
    );

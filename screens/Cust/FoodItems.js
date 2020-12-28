@@ -40,13 +40,13 @@ const FoodItems = props =>
     //flatlist's key prop will take your unique ID from database
     //filhal saray items display karraha hai but once you fetch data according to category
     //insert that data into FlatList's data prop
-
+    
     const addToCartHandler = addItem =>
     {
         //adds items to the order list, modify here for quantity
         //for help, i've added key here, check if item present with key
         console.log(addItem.key);
-        setOrder([...order,addItem]);
+        setOrder([...order,{...addItem,key:Date.now()}]);
     }
     console.log(order);
 
