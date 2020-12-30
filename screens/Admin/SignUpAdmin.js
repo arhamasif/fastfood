@@ -92,14 +92,7 @@ const SignUpAdmin = props =>
     }
     const rePwInputFunction = enteredText =>
     {
-        if(enteredText===user.current.password)
-        {
-            return;
-        }
-        else
-        {
-            Alert.alert('Passwords do not match','Re-enter Password',[{title:'Re-enter',style:'destructive',onPress:()=>{user.current.password=''}}]);
-        }
+        return;
     }
     const locInputFunction = enteredText =>
     {

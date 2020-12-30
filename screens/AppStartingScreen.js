@@ -22,7 +22,7 @@ const AppStartingScreen = props => {
             <TouchableOpacity activeOpacity={0.8} onPress={toCustLoginScreen}>
                 <View style={styles.insideButtonBox}>
                     <Text style={styles.title}>
-                        Customer
+                        Teacher
                     </Text>
                 </View>
             </TouchableOpacity>
@@ -30,7 +30,7 @@ const AppStartingScreen = props => {
             <TouchableOpacity activeOpacity={0.8} onPress={toAdminLoginScreen}>
                 <View style={styles.insideButtonBox}>
                     <Text style={styles.title}>
-                        Admin
+                        Canteen
                     </Text>
                 </View>
             </TouchableOpacity>

@@ -12,8 +12,8 @@ import styles from './stylesVer';
 
 const CELL_COUNT = 5;
 
-const UnderlineExample = () => {
-  const {value,setValue} = props;
+const UnderlineExample = ({value,setValue}) => {
+
   const ref = useBlurOnFulfill({value, cellCount: CELL_COUNT});
   const [props, getCellOnLayoutHandler] = useClearByFocusCell({
     value,

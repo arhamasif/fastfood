@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import { View,Text,StyleSheet, Modal, TouchableOpacity} from 'react-native';
 
 import Colors from './colors';
@@ -6,12 +6,11 @@ import UnderlineExample from'./UnderlineExample';
 
 const Verification = props =>
 {
-
-    
+        
 
         const {navigation,submitData} = props;
         useEffect(()=>{
-            if(false/*value===verification wali value*/)
+            if(value.length==5/*value===verification wali value*/)
             {
                 submitData();
                 props.visibleFunc();
@@ -36,11 +35,11 @@ const Verification = props =>
             <View style={styles.outerBox}>
             <Text>Verification link is sent</Text>
             <View style={styles.buttonBox}>
-            <TouchableOpacity style={styles.insideButtonBox} onPress={()=>{/*insert verification function here*/}}>
-                <Text>Press this to send again!</Text>
+            <TouchableOpacity style={styles.insideButtonBox} onPress={props.verificationFunc}>
+                <Text style={{color:'white'}}>Press this to send again!</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.insideButtonBox} onPress={props.visibleFunc}>
-                <Text>Go Back</Text>
+                <Text style={{color:'white'}}>Go Back</Text>
             </TouchableOpacity>
             </View>
             </View>
@@ -54,7 +53,8 @@ const styles = StyleSheet.create({
         flex:1,
         justifyContent:'flex-start',
         alignItems:'center',
-        backgroundColor:Colors.primary
+        backgroundColor:Colors.primary,
+        justifyContent:'center'
     },
     outerBox:
     {
@@ -62,24 +62,25 @@ const styles = StyleSheet.create({
         width:'80%',
         maxHeight:'80%',
         backgroundColor:'white',
-        flexWrap:'wrap'
+        alignItems:'center',
+        justifyContent:'center'
     },
     insideButtonBox:
     {
-        width:'40%',
-        height:'44%',
+        width:'50%',
+        height:'55%',
         backgroundColor:Colors.primary,
         alignItems:'center',
         justifyContent:'center',
         borderWidth:4,
         borderRadius:8,
         borderColor:Colors.secondary,
-        marginHorizontal:15
+        marginHorizontal:20
     },
     buttonBox:
     {
         flexDirection:'row',
-        justifyContent:'space-around',
+        justifyContent:'space-evenly',
         alignItems:'center'
     }
 });

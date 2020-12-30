@@ -33,12 +33,40 @@ const SignUpCust = props =>
             department:''
         }
     );
+
+    const [isVerified,setIsVerified] = useState(false);
+
+    const verificationFunc = () => {
+        fetch("http://10.0.2.2:3000/verify-data",{
+            method:"post",
+            headers :{
+                'Content-Type':'application/json'
+            },
+            body:JSON.stringify({
+                Username:user.current.username,
+                FirstName:user.current.firstname,
+                LastName:user.current.lastname,
+                email:user.current.email,
+                PhoneNumber:user.current.phonenumber,
+                password:user.current.password,
+                department:user.current.department,
+                roomno:user.current.officelocation
+            }) 
+    })
+        .then(res=>res.json())
+        .then(data=>{
+            console.log(data);
+            
+        })
+}
+
     const [isVisible,setisVisible] = useState(false);
     const confirmHandler = () =>
     {
         if(true/*check with database if username,email or phone number is same or not */){
             /*if it is not same,execute these commands*/
             console.log(user);
+            verificationFunc();
             setisVisible(true);
         }
         else if(false/*username is same*/){
@@ -92,14 +120,7 @@ const SignUpCust = props =>
     }
     const rePwInputFunction = enteredText =>
     {
-        if(enteredText===user.current.password)
-        {
-            return;
-        }
-        else
-        {
-            Alert.alert('Passwords do not match','Re-enter Password',[{title:'Re-enter',style:'destructive',onPress:()=>{user.current.password=''}}]);
-        }
+        return;
     }
     const locInputFunction = enteredText =>
     {
@@ -138,7 +159,7 @@ const SignUpCust = props =>
         <TouchableWithoutFeedback onPress={keyboardDisappear} >
         
         <View style={styles.screen}>
-            <Verification visible={isVisible} visibleFunc={removeVerification} navigation={navigation} signUpFrom="Cust" submitData={Submitdata}/>
+            <Verification visible={isVisible} visibleFunc={removeVerification} navigation={navigation} signUpFrom="Cust" submitData={Submitdata} verificationFunc={verificationFunc}/>
             <View style={styles.outerBox}>
                 <ScrollView style={styles.scroll}>
                     <DataBox title="Username" inputData={usernameInputFunction}  inputboxstyles={styles.boxStyle} textstyles={styles.textStyle} />
