@@ -51,7 +51,7 @@ const Verification = props =>
 const styles = StyleSheet.create({
     screen:{
         flex:1,
-        justifyContent:'flex-start',
+        justifyContent:'center',
         alignItems:'center',
         backgroundColor:Colors.primary,
         justifyContent:'center'
@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
     {
         padding:10,
         width:'80%',
-        maxHeight:'80%',
+        height:'auto',
         backgroundColor:'white',
         alignItems:'center',
         justifyContent:'center'
@@ -80,7 +80,7 @@ const styles = StyleSheet.create({
     buttonBox:
     {
         flexDirection:'row',
-        justifyContent:'space-evenly',
+        justifyContent:'space-between',
         alignItems:'center'
     }
 });
