@@ -45,13 +45,13 @@ const {navigation} = props;
         );
       }}
       />
-      <TouchableOpacity onPress={navigateToCanteens}>
-                    <View style={styles.backButton}>
+      <View style={styles.outsideBackButton}>
+                    <TouchableOpacity onPress={navigateToCanteens} style={styles.backButton}>
                         <Text style={styles.insideButtonTitle}>
                             Choose a different canteen
                         </Text>
-                    </View>
-                </TouchableOpacity>
+                    </TouchableOpacity>
+                </View>
   </View>
   )
 };
@@ -88,11 +88,13 @@ const styles = StyleSheet.create({
   {
     flexDirection:'row',
     justifyContent:'center',
-    backgroundColor:'#e76f51',
+    backgroundColor:Colors.primary,
     justifyContent:'space-around',
     alignItems:'center',
     width:360,
-    height:'30%'
+    height:'30%',
+    borderBottomWidth:7,
+    borderColor:Colors.secondary
   },
   image:
   {
@@ -103,16 +105,31 @@ const styles = StyleSheet.create({
     marginVertical:10
   },
   backButton:
-    {
-        backgroundColor:Colors.primary,
-        marginVertical:10
-    },
-    insideButtonTitle:
-    {
-        color:'white',
-        fontSize:14,
-        fontWeight:'bold'
-    }
+  {
+    backgroundColor:Colors.primary,
+    marginVertical:10,
+    borderRadius:3,
+    borderBottomWidth:3,
+    borderColor:Colors.secondary,
+    paddingHorizontal:3,
+    width:'50%',
+    alignItems:'center',
+    justifyContent:'space-around'
+  },
+  insideButtonTitle:
+ {
+      color:'white',
+      fontSize:14,
+      fontWeight:'bold'
+  },
+  outsideBackButton:
+  {
+    width:'100%',
+    marginHorizontal:3,
+    marginVertical:3,
+    justifyContent:'center',
+    alignItems:'center'
+  }
 });
 
 export default Categories;
