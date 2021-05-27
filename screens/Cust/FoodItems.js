@@ -1,9 +1,11 @@
 import React, { useRef, useState,useEffect } from 'react';
-import {View,Text,StyleSheet,FlatList} from 'react-native';
+import {View,Text,StyleSheet,FlatList,SafeAreaView,ImageBackground} from 'react-native';
 import Foods from '../../components/Foods';
 import Colors from '../../components/colors';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import colors from '../../components/colors';
+import Icon from 'react-native-vector-icons/FontAwesome';
+
 
 const FoodItems = props =>
 {
@@ -15,6 +17,7 @@ const FoodItems = props =>
     {
         navigation.pop();
     }
+    
 
     //built this to record the order
     const [order,setOrder] = useState([]);
@@ -54,29 +57,34 @@ const FoodItems = props =>
     return(
         <View style={styles.screen}>
             <FlatList 
+            contentContainerStyle={{
+                maxHeight:'80%',
+                maxWidth:'90%',
+                backgroundColor:'red',
+                marginTop:10,
+                justifyContent:'space-evenly'
+            }}
             style={styles.flist}
             data={Foods}
             key={Foods.key}
             renderItem={
                 ({item}) =>{
         return(
-            <View style={styles.list}>
+            <SafeAreaView style={styles.list}>
             <View style={styles.itemBox}>
-                <View style={styles.itemnameBox}>
-                    <Text style={styles.title}>{item.title}</Text>
-                </View>
-                <View style={styles.itemPriceBox}>
-                    <Text style={styles.title}>{item.price} rs</Text>
-                </View>
-            </View>
-                <TouchableOpacity onPress={addToCartHandler.bind(this,(item))}>
-                    <View style={styles.insideButtonBox}>
-                        <Text style={styles.insideButtonTitle}>
-                            Add to Cart
-                        </Text>
+            <ImageBackground style={styles.image} source={item.image}>
+                    <View style={styles.itemNameBox}>
+                        <Text style={styles.title}>{item.title}</Text>
                     </View>
-                </TouchableOpacity>
-            </View> 
+                    <View style={styles.itemPriceBox}>
+                        <Text style={styles.price}>{item.price} Rs</Text>
+                    </View>
+            </ImageBackground>
+            </View>
+            <View style={styles.iconBox}>
+                <Icon name='cart-plus' size={34} style={styles.cartPlusIcon} onPress={addToCartHandler.bind(this,(item))} />
+            </View>
+            </SafeAreaView> 
         );
         }}
             />
@@ -101,12 +109,10 @@ const styles = StyleSheet.create({
     },
     itemBox:
     {
-        width:'100%',
-        height:'8%',
-        flexDirection:'row',
-        alignItems:'center',
-        justifyContent:'flex-start',
-        marginBottom:10,
+        width:'80%',
+        height:'100%',
+        backgroundColor:'black',
+        flexDirection:'column-reverse'
     },
     buttonBox:
     {
@@ -133,44 +139,68 @@ const styles = StyleSheet.create({
         fontSize:14,
         fontWeight:'bold'
     },
-    itemnameBox:
+    itemNameBox:
     {
-        flexDirection:'row',
-        width:'80%',
-        justifyContent:'center',
-        backgroundColor:Colors.secondary,
-        borderTopLeftRadius:8,
-        borderBottomStartRadius:8
+        width:'100%',
+        height:'30%',
+        justifyContent:'flex-end',
+        backgroundColor:Colors.primary,
+        opacity:20
     },
     itemPriceBox:
     {
         flexDirection:'row',
-        width:'20%',
-        right:0,
-        justifyContent:'center',
-        backgroundColor:colors.tertiary,
-        borderTopRightRadius:8,
-        borderBottomEndRadius:8
+        width:'100%',
+        height:'30%',
+        justifyContent:'flex-end',
+        backgroundColor:Colors.quaternary
     },
     title:
     {
         fontWeight:'bold',
         fontSize:15,
-        color:'white'
+        color:'white',
+        marginHorizontal:8,
+        marginBottom:8
+    },
+    price:
+    {
+        fontWeight:'500',
+        fontSize:20,
+        color:'white',
+        marginHorizontal:8,
+        marginTop:3
     },
     list:
     {
         width:'100%',
-        height:'12%'
+        height:'50%',
+        marginVertical:2,
+        flexDirection:'row',
+        backgroundColor:'blue'
     },
     backButton:
     {
         backgroundColor:Colors.primary,
         marginVertical:10
     },
-    flist:
+    cartPlusIcon:
     {
-        
+        color:'white'
+    },
+    iconBox:
+    {
+        backgroundColor:Colors.primary,
+        width:'20%',
+        height:'30%',
+        alignItems:'center'
+    },
+    image:
+    {
+        flex:1,
+        maxWidth:'100%',
+        maxHeight:'100%',
+        resizeMode:'stretch'
     }
 });
 

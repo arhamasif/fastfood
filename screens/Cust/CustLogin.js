@@ -4,7 +4,7 @@ import { View,Text,StyleSheet, Alert,TouchableOpacity, Keyboard,TouchableWithout
 import Colors from '../../components/colors';
 import DataBox from'../../components/DataBox';
 
-const AdminLogin = props =>
+const CustLogin = props =>
 {
     const {navigation} = props;
     const user = useRef(
@@ -147,4 +147,4 @@ const styles = StyleSheet.create({
     }
 });  
 
-export default AdminLogin;
+export default CustLogin;
